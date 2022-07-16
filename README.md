@@ -45,9 +45,12 @@ source .devops/bin/activate
 ### Kubernetes Steps
 
 * Setup and Configure Docker locally
+  1. Install Docker in: `https://docs.docker.com/v17.12/install/`
+  2. Verify installed docker with command: `docker --version`
+  3. Create a Docker account: `https://hub.docker.com/signup`
+* Setup and Configure Kubernetes locally
   1. Install VirtualBox: `brew cask install virtualbox`
   2. Install minikube: `brew cask install minikube`
-* Setup and Configure Kubernetes locally
 * Create Flask app in Container
   - Build image: `docker build --tag=ml-app .`
 * Run via kubectl
