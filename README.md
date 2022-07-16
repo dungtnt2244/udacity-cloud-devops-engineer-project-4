@@ -45,9 +45,16 @@ source .devops/bin/activate
 ### Kubernetes Steps
 
 * Setup and Configure Docker locally
+  1. Install VirtualBox: `brew cask install virtualbox`
+  2. Install minikube: `brew cask install minikube`
 * Setup and Configure Kubernetes locally
 * Create Flask app in Container
+  - Build image: `docker build --tag=ml-app .`
 * Run via kubectl
+  1. Set docker registry path to the image: `dockerpath=(your_docker_id)/ml-app`
+  2. Run command to create pod for your app: `kubectl run ml-app --image=$dockerpath --image-pull-policy="Always" --overrides='{"apiVersion": "v1", "spec":{"imagePullSecrets": [{"name": "regcred"}]}}'`
+  3. Check pod status : `kubectl get pods`
+  4. Run command to forward port to pod: `kubectl port-forward ml-app 8000:80`
 
 ## Directory Structure
 
